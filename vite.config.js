@@ -1,9 +1,8 @@
-import { defineConfig } from 'vite'
+﻿import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
-  // Se hospedar em github.com/SEU_USUARIO/lume, troque '/' por '/lume/'
   base: '/lume/',
   plugins: [
     react(),
@@ -13,43 +12,21 @@ export default defineConfig({
       manifest: {
         name: 'Lume',
         short_name: 'Lume',
-        description: 'Mantenha aceso. Um lugar só pra tudo que importa.',
+        description: 'Mantenha aceso.',
         theme_color: '#0F0C0A',
         background_color: '#0F0C0A',
         display: 'standalone',
         orientation: 'portrait',
-        start_url: '/',
-        scope: '/',
+        start_url: '/lume/',
+        scope: '/lume/',
         lang: 'pt-BR',
         icons: [
-          {
-            src: '/icons/icon-192.png',
-            sizes: '192x192',
-            type: 'image/png',
-            purpose: 'any maskable'
-          },
-          {
-            src: '/icons/icon-512.png',
-            sizes: '512x512',
-            type: 'image/png',
-            purpose: 'any maskable'
-          }
+          { src: '/lume/icons/icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any maskable' },
+          { src: '/lume/icons/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any maskable' }
         ]
       },
       workbox: {
-        // Cache de todos os assets do app
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}'],
-        runtimeCaching: [
-          {
-            // Cache de fontes do Google
-            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
-            handler: 'CacheFirst',
-            options: {
-              cacheName: 'google-fonts-cache',
-              expiration: { maxEntries: 10, maxAgeSeconds: 60 * 60 * 24 * 365 }
-            }
-          }
-        ]
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,woff2}']
       }
     })
   ]
