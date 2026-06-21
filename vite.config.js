@@ -4,7 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 export default defineConfig({
   // Se hospedar em github.com/SEU_USUARIO/lume, troque '/' por '/lume/'
-  base: '/',
+  base: '/lume/',
   plugins: [
     react(),
     VitePWA({
